@@ -2,16 +2,32 @@
 
 int	main(int ac, char **av)
 {
+	char	*line;
+
 	(void)ac;
 	(void)av;
-	while (1)
+	if (isatty(fileno(stdin))) //対話型シェル
+		// ./minishell
+		while ((line = readline("minishell> ")))
+		{
+			if (*line)
+				add_history(line);
+			//　入力された文字に対する処理をここに書く
+			ft_putstr_fd("You entered: ", 1);
+			ft_putstr_fd(line, 1);
+			ft_putstr_fd("\n", 1);
+			free(line);
+		}
+	else
+	// echo "hello" | ./minishell
 	{
-		if (isatty(fileno(stdin)))
-			// ./minishell
-			ft_putstr_fd("minishell> ", 1);
-		else
-			// echo "hello" | ./minishell
-			ft_putstr_fd("FDがstdinではない", 1);
-		break ;
+		while ((line = get_next_line(0)) != NULL) //非対話型シェル
+		{
+			ft_putstr_fd("You entered: ", 1);
+			ft_putstr_fd(line, 1);
+			ft_putstr_fd("\n", 1);
+			free(line);
+		}
 	}
+	return (0);
 }

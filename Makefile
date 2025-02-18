@@ -6,7 +6,7 @@
 #    By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 12:11:35 by akunimot          #+#    #+#              #
-#    Updated: 2025/02/18 12:17:58 by akunimot         ###   ########.fr        #
+#    Updated: 2025/02/18 13:07:55 by akunimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_DIR      = ./srcs
 OBJ_DIR      = ./objs
 
 SRCS         = $(SRC_DIR)/main.c
-			   
+
 OBJS         = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 READLINE     = -lreadline
