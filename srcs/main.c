@@ -2,12 +2,16 @@
 
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	(void)ac;
+	(void)av;
+	while (1)
 	{
-		if (ft_strcmp(av[1], "test") == 0)
-			ft_putstr_fd("OK\n", 1);
+		if (isatty(fileno(stdin)))
+			// ./minishell
+			ft_putstr_fd("minishell> ", 1);
 		else
-			ft_putstr_fd("KO\n", 1);
+			// echo "hello" | ./minishell
+			ft_putstr_fd("FDがstdinではない", 1);
+		break ;
 	}
-	return (0);
 }
